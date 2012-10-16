@@ -9,6 +9,8 @@ Exercises = config['exercises']
 Server = config['server']
 Nick = config['nick']
 Channels = config['channels']
+CommandHelp = "!subscribe, !unsubscribe, quote, !add_exercise, !remove_exercise, !gtfo"
+
 reps = 15 # TODO: don't hard code this; increase by 5 every 2 hours or something
 
 
@@ -41,7 +43,7 @@ bot = Cinch::Bot.new do
         c.channels = Channels 
     end
 
-    on :message, "subscribe" do |m|
+    on :message, "!subscribe" do |m|
         nick = m.user.nick
         if subscriberList.include?(nick)
             m.reply "I like your enthusiasm, #{nick}, but you're already on the list. MattDaemon still loves you."
@@ -52,7 +54,7 @@ bot = Cinch::Bot.new do
         end
     end
 
-    on :message, "unsubscribe" do |m|
+    on :message, "!unsubscribe" do |m|
         nick = m.user.nick
         if subscriberList.include?(nick)
             subscriberList.delete(nick)
@@ -66,6 +68,28 @@ bot = Cinch::Bot.new do
     # on demand inspiration!
     on :message, "quote" do |m|
         inspire(m)
+    end
+
+    # help/commands list
+    on :message, "MattDaemon" do |m|
+        m.reply "Type \"MattDaemon help\" or \"!help\" for a list of commands"
+    end
+    on :message, "MattDaemon help" do |m|
+        m.reply CommandHelp
+    end
+    on :message, "!help" do |m|
+        m.reply CommandHelp
+    end
+
+    # add/remove exercieses
+    on :message, "!add_exercise" do |m|
+        m.reply "NOPE"
+    end
+    on :message, "!remove_exercise" do |m|
+        m.reply "NOPE"
+    end
+    on :message, "!gtfo" do |m|
+        m.reply "NOPE"
     end
 
     # DEBUG exercises
