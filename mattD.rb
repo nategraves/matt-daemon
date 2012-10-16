@@ -1,11 +1,16 @@
 require 'cinch'
 require 'yaml'
 
-# DAMON DATA ------
-data = YAML.load_file('data.yaml')
+# DAMON CONFIG ------
+config = YAML.load_file('config.yaml')
+
+Quotes = config['inspiration']
+Exercises = config['exercises']
+Server = config['server']
+Nick = config['nick']
+Channels = config['channels']
 reps = 15 # TODO: don't hard code this; increase by 5 every 2 hours or something
-Quotes = data['inspiration']
-Exercises = data['exercises']
+
 
 # SUBSCRIBER DATA ------
 if File.exist?('subscribers.yaml')
@@ -13,6 +18,7 @@ if File.exist?('subscribers.yaml')
 else
     subscriberList = [] 
 end
+
 
 # helper methods ------
 def saveSubscribers(list)
@@ -26,12 +32,13 @@ def inspire(m)
     m.reply "\"#{quote}\" - Matt Damon" 
 end
 
+
 # MattDaemon ------
 bot = Cinch::Bot.new do
     configure do |c|
-        c.server = "irc.freenode.org"
-        c.nick = "MattDaemon"
-        c.channels = ["#cinch-bots"]
+        c.server = Server 
+        c.nick = Nick 
+        c.channels = Channels 
     end
 
     on :message, "subscribe" do |m|
