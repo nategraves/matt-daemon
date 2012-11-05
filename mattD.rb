@@ -4,8 +4,13 @@ require 'yaml'
 # DAMON DATA ------
 data = YAML.load_file('data.yaml')
 reps = 15 # TODO: don't hard code this; increase by 5 every 2 hours or something
+
 Quotes = data['inspiration']
 Exercises = data['exercises']
+
+FileWorkdayFlag = "workday.flag"
+FileExerciseFlag = "exercise.flag"
+FilePickExerciseFlag = "pick_new_exercise.flag"
 
 # SUBSCRIBER DATA ------
 if File.exist?('subscribers.yaml')
@@ -20,10 +25,17 @@ def saveSubscribers(list)
         YAML::dump(list, out)
     }
 end
-
 def inspire(m)
     quote = Quotes.sample
     m.reply "\"#{quote}\" - Matt Damon" 
+end
+def doExercise(m)
+    peeps = subscriberList.join(",")
+    exercise = Exercises.sample
+    if subscriberList.any?
+        inspire(m)
+        m.reply "#{peeps}\: Do #{reps} #{exercise}!" 
+    end
 end
 
 # MattDaemon ------
@@ -63,12 +75,7 @@ bot = Cinch::Bot.new do
 
     # DEBUG exercises
     on :message, "exercise" do |m|
-        peeps = subscriberList.join(",")
-        exercise = Exercises.sample
-        if subscriberList.any?
-            inspire(m)
-            m.reply "#{peeps}\: Do #{reps} #{exercise}!" 
-        end
+        doExercise(m)
     end
 end
 
