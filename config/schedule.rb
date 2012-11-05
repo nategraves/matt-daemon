@@ -1,7 +1,7 @@
 # schedules exercises for MattDaemon by writing some files as flags
 # pretty hacky
 #
-# requires wheneverize
+# requires wheneverize gem
 #
 # to create a crontab:
 # $ wheneverize -w
