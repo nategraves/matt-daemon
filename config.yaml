@@ -1,5 +1,9 @@
 # Inspirational! Moving! FITNESS! Damon.
 
+server: "irc.freenode.org"
+nick: "MattDaemon"
+channels: ["#cinch-bots"]
+
 inspiration: [
     "It's better to be a fake somebody than a real nobody.",
     "It's just better to be yourself than to try to be some version of what you think the other person wants.",
