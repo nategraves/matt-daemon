@@ -2,7 +2,7 @@ require 'cinch'
 require 'yaml'
 
 # CONFIG ------
-$config = YAML.load_file('config.yaml')
+$config = YAML.load_file('config/config.yaml')
 
 Quotes = $config['inspiration']
 Exercises = $config['exercises']
