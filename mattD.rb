@@ -82,12 +82,9 @@ bot = Cinch::Bot.new do
 
     # help/commands list
     on :message, "MattDaemon" do |m|
-        m.reply "Type \"MattDaemon help\" or \"!help\" for a list of commands"
+        m.reply "Type \"!mattHelp\" for a list of commands"
     end
-    on :message, "MattDaemon help" do |m|
-        m.reply CommandHelp
-    end
-    on :message, "!help" do |m|
+    on :message, "!mattHelp" do |m|
         m.reply CommandHelp
     end
 
