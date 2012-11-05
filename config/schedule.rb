@@ -4,7 +4,7 @@
 
 FlagPath = "~/dev/matt-daemon"
 
-every :day, :at => '10:38pm' do
+every 1.minutes  do
     command "echo exercise > #{path}/exercise.flag"
 end
 

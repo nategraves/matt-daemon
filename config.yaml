@@ -4,6 +4,8 @@ server: "irc.freenode.org"
 nick: "MattDaemon"
 channels: ["#cinch-bots"]
 
+sleep: 10 
+
 inspiration: [
     "It's better to be a fake somebody than a real nobody.",
     "It's just better to be yourself than to try to be some version of what you think the other person wants.",
