@@ -1,6 +1,10 @@
-# shedules exercises for MattDaemon
+# schedules exercises for MattDaemon by writing some files as flags
+# pretty hacky
+#
 # requires wheneverize
-# writes a crontab with wheneverize -w
+#
+# to create a crontab:
+# $ wheneverize -w
 
 FlagPath = "~/dev/matt-daemon"
 
