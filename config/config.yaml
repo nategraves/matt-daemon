@@ -1,29 +1,33 @@
-# Inspirational! Moving! FITNESS! Damon.
+# Inspirational! Moving! FITNESS! Da(e)mon.
 
 server: "irc.freenode.org"
 nick: "MattDaemon"
 channels: ["#cinch-bots"]
 
-sleep: 10 
+sleep: 240 # seconds between flag checks
 
 inspiration: [
     "It's better to be a fake somebody than a real nobody.",
     "It's just better to be yourself than to try to be some version of what you think the other person wants.",
     "You've given an aging suburban dad the ego-boost of a lifetime.",
     "I guess some of these people must be such rampant pricks that people are amazed when you say hello.",
-    "Success is not something I've wrapped my brain around. If people go to those movies, then yes, that's true, big-time success. If not, it's much ado about nothing.",
+    "Success is not something I've wrapped my brain around.",
     "For Ripley I learned to play some songs on the piano, and I never really played them again.",
     "Eventually stardom is going to go away from me.",
     "People forget that Ben is a terrific actor",
     "If I wear my Boston hat around town, I will also get, \"Hey Matt, screw you. We're going to beat your team.\"",
     "I honestly if I get a vacation I'm gonna go and sit on my couch in New York cause that's the one place I haven't been for a very long time.",
-    "I was never that much a focus of interest that I became a 'thing' at an earlier point in my career. I'm aware of having become a 'thing' now, which doesn't give me a lot of pleasure."
+    "I'm aware of having become a 'thing' now, which doesn't give me a lot of pleasure.",
+    "If your movies don't perform, they just stop calling you.",
+    "There are people who appear in the magazines and I don't know who they are."
 ]
 
 exercises: [
-    "push-ups",
+    "normal push-ups",
+    "wide push-ups",
     "picnic table dips",
-    "normal curls",
-    "crossover curls",
-    "squats"
+    "crunches",
+    "bicycle crunches",
+    "squats",
+    "bicep curls with zeve's laptop"
 ]

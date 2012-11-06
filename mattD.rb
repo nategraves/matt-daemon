@@ -11,12 +11,13 @@ Nick = $config['nick']
 Channels = $config['channels']
 SleepInterval = $config['sleep']
 CommandHelp = "!subscribe, !unsubscribe, quote, !gtfo"
-FileWorkdayFlag = "workday.flag"
-FileExerciseFlag = "exercise.flag"
-FilePickExerciseFlag = "pick_new_exercise.flag"
+FlagWorkday = "workday.flag"
+FlagWeekend = "weekend.flag"
+FlagExercise = "exercise.flag"
+FlagPickExercise = "pick_new_exercise.flag"
 
 $reps = 15 # TODO: maybe don't hard code this; increase by 5 every 2 hours or something
-$currentExercise = Exercises.sample
+$currentExercise = nil
 
 
 # SUBSCRIBER DATA ------
@@ -55,8 +56,9 @@ end
 
 def getRipped(m)
     peeps = $subscriberList.join(",")
+    $currentExercise ||= Exercises.sample
     if $subscriberList.any?
-        msg = "#{peeps}\: Do #{$reps} #{$currentExercise}!" 
+        msg = "#{peeps}\: Do #{$reps} #{exercise}!" 
         if m
             inspire(m)
             m.reply msg
@@ -129,23 +131,32 @@ $matt = Cinch::Bot.new do
 end
 
 Thread.new do
-    $matt.start
+    #$matt.start
 end
 
 
 # SCHEDULING  ------
 while true do
 
-    # fire off the exercise message
-    if File.exist?(FileExerciseFlag)
-        getRipped(nil)
-        File.delete(FileExerciseFlag)
-    end
+    # no getting ripped on the weekend
+    if !File.exist?(FlagWeekend)
 
-    # pick a new exercise
-    #if File.exist?(FilePickExerciseFlag)
-        #currentExercise = Exercises.sample
-    #end
+        # fire off the exercise message
+        # during workday only 
+        if File.exist?(FlagWorkday)
+            if File.exist?(FlagExercise) 
+                getRipped(nil)
+                File.delete(FlagExercise)
+            end
+        end
+
+        # pick new exercise each day
+        if File.exist?(FlagPickExercise)
+            $currentExercise = Exercises.sample
+            File.delete(FlagPickExercise)
+        end
+
+    end
 
     sleep(SleepInterval)
 end
